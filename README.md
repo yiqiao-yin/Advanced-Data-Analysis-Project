@@ -1,12 +1,12 @@
 # Advanced Data Analysis Project
 
-This github repo stores the project for Advanced Data Analysis course for Columbia University. Info:
+This github repo stores the project for Advanced Data Analysis course for Columbia University. 
 
-Course: STATS GR5291
-Term: Spring 2019
-Professor: Hammou Elbarmi
-
-This github repo is also used as a submission to the project. 
+Info:
+- Course: STATS GR5291
+- Term: Spring 2019
+- Professor: Hammou Elbarmi
+- This github repo is also used as a submission to the project. 
 
 Team: 
 Lin, Xiaotong (MA, Columbia University)
