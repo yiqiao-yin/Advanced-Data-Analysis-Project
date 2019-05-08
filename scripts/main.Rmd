@@ -1,0 +1,167 @@
+---
+title: "R Notebook for ADA"
+author: "Xiaotong Lin, Yiqiao Yin"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: true
+    number_sections: true
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+# Introduction
+
+The Current Population Survey (CPS) is used to supplement census information between census years.  These data consist of a random sample of 534 persons from the CPS, with information on wages and other characteristics of the workers, including sex, number of years of education, years of work experience, occupational status, region of residence and union membership.
+
+ <a href="#top">Back to top</a>
+
+## Motivation
+
+Identifying variables that are useful in prediction and in inference are both important in today's statistical learning and practice, especially for current and future big data problems. As data sets grow unwieldy, searching for important and predictive variables, or clusters of variables that are responsible for important trends or patterns, becomes more and more challenging and essential. However, the popular statistical methods that have served us well for many decades, dealing with numerous problems, mahy no longer be adequate for complicated problems arising from current data sets. For example, recent discoveries of significant variants using traditional statistical tests in GWAS studies have not been accompanied with gains in prediction, or to gain better understanding of genetic functions. This phenomenon is pervasive across different types of data and problems, as well as different sample sizes, posing a general question: why don't highly statistically significant variableslead to good predictors nor regressors? This type of basic questions, used to be worked well by familiar methods, requires to give second thoughts and reevaluations.
+
+The purpose of this project is to investigate the performance comparison between non-parametric and parametric classification method. 
+
+ <a href="#top">Back to top</a>
+
+# Main Objectives
+
+We are interested produce a replicable solution for clients/management team by investigating the performance of using non-parametric and parametric methods. Moreover, in which way do they differ from each other?
+
+ <a href="#top">Back to top</a>
+
+```{r, warning=FALSE, message=FALSE, error=FALSE}
+# Let us load the sciprt of all defined functions
+path <- "C:/Users/eagle/OneDrive/STATS GR5291 - Advanced Data Analysis/Project/"
+source(paste0(path,"scripts/definition_of_functions.R"))
+```
+
+ <a href="#top">Back to top</a>
+
+# Application on Real Data
+
+This section we apply the same experimental design in simulation on real data set. What is the data? What is the attributes? What makes sense? What is the key in this data?
+
+## Income Prediction by Income Data
+
+The income data set has the following covariates.
+
+- EDUCATION: Number of years of education.
+
+- SOUTH: Indicator variable for Southern Region (1=Person lives in South, 0=Person lives elsewhere).
+
+- SEX: Indicator variable for sex (1=Female, 0=Male).
+
+- EXPERIENCE: Number of years of work experience.
+
+- UNION: Indicator variable for union membership (1=Union member, 0=Not union member).
+
+- AGE: Age (years).
+
+- ETHNIC BACKGROUND: Ethnic (1=Other, 2=Hispanic, 3=White).
+
+- OCCUPATION: Occupational category (1=Management, 	2=Sales, 3=Clerical, 4=Service, 5=Professional, 6=Other).
+
+- SECT: Sector (0=Other, 1=Manufacturing, 2=Construction).
+
+- MARITAL: Marital Status (0=Unmarried,  1=Married)
+
+The response variable is:
+
+- WAGE: Wage (dollars per hour)
+
+## Experimental Design
+
+Since we are given a large amount of observations, we can conduct k-fold cross validation as each fold has sufficient amount of data for us to carry out the analysis. 
+
+ <a href="#top">Back to top</a>
+
+## Results
+
+We present cross validation results and test set performance in the table below.
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE, results='hide', fig.show='hide', include=FALSE}
+# Let us load the sciprt of all defined functions
+# Data
+data <- read.csv(paste0(path,"data/wagedata.csv"))
+head(data); dim(data)
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE, results='hide', fig.show='hide', include=FALSE}
+# Visualize
+#cor(data); pairs(data)
+
+# Run Algorithm
+ResultArray <- array(NA, c(15,7,10))
+ResultArrayAve <- array(NA, c(15,7))
+for (i in 1:10) {
+  RESULT <- real_data_application_regression(
+  seed = i,
+  data = data,
+  how.many.folds = 5)
+  ResultArray[,,i] <- RESULT
+  print(paste0("Done with round: ", i))
+}
+for (i in 1:15) {
+  for (j in 1:7) {
+    ResultArrayAve[i,j] <- mean(ResultArray[i,j,])
+  }
+}
+colnames(ResultArrayAve) <- colnames(RESULT)
+rownames(ResultArrayAve) <- rownames(RESULT)
+```
+
+```{r}
+knitr::kable(ResultArrayAve)
+```
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, error=FALSE, fig.width=18, fig.height=8}
+# Plot
+library(lattice); library(latticeExtra)
+resultplot <- RESULT[, 1:5]
+sub.data <- matrix(as.numeric(as.character(unlist(resultplot))),nrow(resultplot))
+colnames(sub.data) <- colnames(resultplot)
+rownames(sub.data) <- c(as.character(rownames(RESULT)))
+cloud(
+  sub.data,
+  panel.3d.cloud = panel.3dbars,
+  xbase = 0.8,
+  ybase = 0.8,
+  zlim = c(0, 20),
+  scales = list(arrows = FALSE, just = "right"),
+  xlab = list(label = "Algo.", cex = 1.2),
+  ylab = list(label = "Kth Fold", cex = 1.2),
+  zlab = list(label = "Prediction Rate", cex = 1.2, rot = 90),
+  lwd = 0.9,
+  zoom = 0.8,
+  main = list(label = "Test Set Performance", cex = 2),
+  col.facet = level.colors(
+    sub.data, 
+    at = do.breaks(range(sub.data), 20), 
+    col.regions = cm.colors, colors = TRUE),
+  colorkey = list(col = cm.colors, at = do.breaks(range(sub.data), 20))
+)
+```
+
+From the above analysis, we observe that Principle Component and Regression together perform the lest Root Mean Square Error (RMSE). We conclude that we will choose this combination as the proposed solution. 
+
+ <a href="#top">Back to top</a>
+
+# Conclusion
+
+xxx
+ <a href="#top">Back to top</a>
+
+# Citation
+
+xxx
+
+ <a href="#top">Back to top</a>
+
+# Appendix
+
+xxx
