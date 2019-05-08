@@ -9,8 +9,8 @@ Info:
 - This github repo is also used as a submission to the project. 
 
 Team: 
-Lin, Xiaotong (MA, Columbia University)
-Yin, Yiqiao (MA, Columbia University)
+- Lin, Xiaotong (MA, Columbia University)
+- Yin, Yiqiao (MA, Columbia University)
 
 Content:
 - For full report, we want to direct audience [here](https://github.com/yiqiao-yin/Advanced-Data-Analysis-Project/blob/master/docs/Final_Report.pdf). 
