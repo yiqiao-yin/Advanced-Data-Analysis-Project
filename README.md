@@ -12,6 +12,10 @@ Team:
 Lin, Xiaotong (MA, Columbia University)
 Yin, Yiqiao (MA, Columbia University)
 
+Content:
+- For full report, we want to direct audience [here](https://github.com/yiqiao-yin/Advanced-Data-Analysis-Project/blob/master/docs/Final_Report.pdf). 
+- For quick debrief, one can gloss over the following.
+
 ## Intro
 
 The goal of this project is to investigate the hourly wage from the 1985 Current Population Survey (CPS) dataset and find out that its determinant variables. By taking 0.05 as the significant level in the whole project and through a diverse group of non-parametric and parametric methods, such as correlation tests and two-sample tests, the results show that experience and education are the two most important and informative variables that they are by themselves positively influence hourly wage. For example, an employee’s hourly wage will increase $1.21/hour if he or she has one more year of education background or increase $0.68/hour with one more year experience while keeping other variables the same. However, education and experience are negatively associated with each other. Additionally, tests on Contingency Table suggest that males with the same experience level receive the higher hourly wage in more detail. Therefore, we propose the solution to predict the hourly wage of a person by Linear Regression with 10 variables, including age, education, experience, sex, south, union, sector, sex-experience, age-experience, and age-education. On average, we are able to predict hourly wages within $4.23/hour.
