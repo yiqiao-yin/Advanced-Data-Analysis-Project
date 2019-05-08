@@ -49,5 +49,5 @@ This table presents the comparison of the performance of different statistical m
 We conclude that wage is positively correlated with education and education is negatively correlated with experience. Also, age is strongly positively correlated with experience. These are identical with the results above that an employee’s hourly wage will increase with the increase of education and experience, but decrease with the increase of age. Hence, companies prefer younger people with more education and experience.
 
 <p align="center">
-  <img src="https://github.com/yiqiao-yin/Advanced-Data-Analysis-Project/blob/master/figs/fig-4.PNG">
+  <img src="https://github.com/yiqiao-yin/Advanced-Data-Analysis-Project/blob/master/figs/fig-5.PNG">
 </p>
