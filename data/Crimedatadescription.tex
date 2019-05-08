@@ -1,0 +1,123 @@
+\documentclass[9pt]{article}
+%\documentclass[12pt, leqno]{article}
+%\usepackage{verbatim} 
+\usepackage{amsfonts}
+\usepackage[dvips]{graphics}
+\textwidth 6.5in
+\textheight 8.6in
+\oddsidemargin -.1in
+\topmargin -.2in
+%\flushbottom
+\newcommand {\dsp}{\displaystyle}
+\newcommand {\bm}{\boldmath}
+\newcommand{\n}{\noindent}
+\newtheorem{lem}{lemma}[section]
+\newtheorem{theorem}{\n{\bf Theorem}}[section]
+\newcommand{\newsection} [1] {\setcounter{equation}{0}
+\setcounter{theorem}{0}\section{#1}}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{prop}{Proposition}[section]
+\renewcommand{\theequation} {\thesection .\arabic{equation}}
+\renewcommand{\thetheorem}{\thesection .\arabic{theorem}}
+\newcommand{\dem}{\noindent {\sc Proof.\mbox{ }}}
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\best}{\begin{eqnarray*}}
+\newcommand{\eest}{\end{eqnarray*}}
+\newcommand{\raro}{\rightarrow}
+\newcommand{\lraro}{\longrightarrow}
+\newcommand{\Raro}{\Rightarrow}
+\newcommand{\lRaro}{\longleftrightarrow}
+\newcommand{\hatone}{\hat{T}_1}
+\newcommand{\hattwo}{\hat{T}_2}
+\newcommand{\hatonetwo}{\hat{T}_{12}}
+\newcommand{\onedag}{T_1^{\dag}}
+\newcommand{\oneddag}{T_1^{\ddag}}
+\newcommand{\onedagb}{T^{\dag}_{1b}}
+\newcommand{\twodag}{T_2^{\dag}}
+\newcommand{\twodagb}{T_{2b}^{\dag}}
+\newcommand{\twoddag}{T_2^{\ddag}}
+\newcommand{\ul}{\underline}
+\newcommand{\ol}{\overline}
+\newcommand{\hattone}{\hat{T}_1}
+\newcommand{\qed} {\hfill \vrule height 6pt width 6pt depth 0pt}
+
+\newcommand{\mbn}{\mathbb{N}}
+\newcommand{\hatttwo}{\hat{T}_2}
+\newcommand{\hatca}{\hat{C}_a}
+\newcommand{\hatcb}{\hat{C}_b}
+\newcommand{\fty}{\left(\frac{F(y)}{T(y)}\right)}
+\newcommand{\ftx}{\left(\frac{F(x)}{T(x)}\right)}
+\newcommand{\infy}{\inf_{l(x)\le y\le x}}
+\newcommand{\supy}{\sup_{l(x)\le y\le x}}
+\newcommand{\vsp}{\vskip .1in}
+\newcommand{\hsp}{\hskip .2in}
+\newcommand{\Hsp}{\hskip .3in}
+\newcommand{\Vsp}{\vskip 2em}
+\newcommand{\up}{\uparrow}
+\newcommand{\dn}{\downarrow}
+
+\newcommand{\till}{\tilde{l}_n}
+\newcommand{\tilL}{\tilde{L}_n}
+\newcommand{\tilf}{\tilde{F}_n}
+\newcommand{\tilg}{\tilde{g}}
+\newcommand{\sqn}{\sqrt{n}}
+\newcommand{\sqm}{\sqrt{m}}
+\newcommand{\stkas}{\stackrel{a.s.}{\lraro}}
+\newcommand{\stkp}{\stackrel{p}{\raro}}
+\newcommand{\stkd}{\stackrel{d}{\raro}}
+\newcommand{\stkw}{\stackrel{w}{\Raro}}
+\newcommand{\eqd}{\stackrel{d}{=}}
+\newcommand{\uso}{\le_{uso}}
+\newcommand{\linv}{L^{-1}}
+%\pagestyle{empty}
+
+\begin{document}
+\baselineskip=22pt
+\begin{center}
+{\large \bf Crime data description}
+\end{center}
+
+\noindent \underline{\bf Problem}: Officials in Kings county (Brooklyn) wish to determine which factors  influence the number of serious crimes per county. 
+The goal is to implement policies that will lead to the reduction of the number serious crimes in their county. Suppose that you were hired to help with this objective using
+the  county demographic information (CDI) data set from Applied Linear Statistical Models, 5th edition, by Kutner, Nachtsheim, Neter, and Li., Appendix C2 (APPENC02.txt).
+This data set provides selected county demographic information for 440 of the most  populous counties in the United States (each one of you is going to analyze a subset of this dataset) . Each line of the data set has an identification number with a county name and state abbreviation and provides information on 14 variables for a single county. Counties with missing data were deleted from the data set. 
+%The information generally pertains to the years 1990 and 1992. The 17 variables are:
+
+
+
+{\normalsize
+\begin{center}
+\begin{tabular}{cll}
+Variable Number& Variable Name  &Description\\ \hline
+1&  Identification Number  & 1-440\\
+2 &County Name   & County name\\
+3& State &  Two-letter state abbreviation\\
+4&  Land area &  Land area (square miles)\\
+5& Total population &  Estimated 1990 population\\
+6& Percent of population  & Percent of 1990 CDI population\\
+&aged 18-34 &aged 18-34\\
+7& Percent of the population& Percent of 1990 CDI population\\
+&65 or older& aged 65 years old or older\\
+8&  Number of active & Number of professionally active \\
+&physicians  &  nonfederal physicians during 1990\\
+9&Number of hospital beds& Total number of beds, cribs, and bassinets during 1990\\
+10&Total serious crimes& Total number of serious crimes in 1990, including murder, rape,\\
+&& robbery, aggravated assault, burglary, larceny-theft, and\\
+  && motor vehicle theft, as reported by law enforcement agencies\\
+11&Percent high school& Percent of adult population (persons 25 years old or older)\\
+&graduates &  who completed 12 or more years of school\\
+12&Percent bachelor's & Percent of adult population (persons 25 years old or older)\\
+& degree&with bachelor's degree\\
+13&Percent below& Percent of 1990 CDI population with income below\\
+&poverty level& poverty level\\
+14&Percent unemployment& Percent of 1990 CDI labor force that is unemployed\\
+15&Per capita income& Per capita income of 1990 CDI population (dollars)\\
+16 &Total personal income& Total personal income of 1990 CDI population (in millions of dollars) \\
+17&Geographic region& Geographic region classification is that used by the U.S. Bureau\\
+&&of the Census, where: 1 = NE, 2 = NC, 3 = S, 4 = W
+\end{tabular}
+\end{center}
+\end{document}
