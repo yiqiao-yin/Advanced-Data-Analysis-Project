@@ -1,4 +1,4 @@
-# Advanced Data Analysis Project
+# Advanced Data Analysis Course Project
 
 This github repo stores the project for Advanced Data Analysis course for Columbia University. 
 
